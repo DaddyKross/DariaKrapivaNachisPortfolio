@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Работы Дарьи — иллюстрация, концепт-арт, дизайн персонажей и анимация.">
+    <title>Работы — Дарья</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <a class="logo" href="index.html">DARYA<span>.</span></a>
+
+    <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="navigation">
+        <a href="index.html">Главная</a>
+        <a href="portfolio.html">Портфолио</a>
+        <a class="active" href="works.html">Работы</a>
+        <a href="index.html#about">Обо мне</a>
+        <a href="index.html#contact">Контакты</a>
+    </nav>
+</header>
+
+<main>
+    <section class="page-intro">
+        <p class="eyebrow">PORTFOLIO / WORKS</p>
+        <h1>Работы</h1>
+        <p>
+            Здесь собраны разные направления творчества Дарьи — от иллюстраций
+            и дизайна персонажей до концепт-арта и анимации.
+        </p>
+    </section>
+
+    <nav class="work-menu" aria-label="Разделы портфолио">
+        <a href="#illustration">Иллюстрация</a>
+        <a href="#concepts">Концепт-арт</a>
+        <a href="#character-design">Персонажи</a>
+        <a href="#animation">Анимация</a>
+    </nav>
+
+    <section class="portfolio-section" id="illustration">
+        <div class="portfolio-heading">
+            <div>
+                <p class="eyebrow">01 / ILLUSTRATION</p>
+                <h2>Иллюстрация</h2>
+            </div>
+            <p>Готовые иллюстрации и самостоятельные художественные работы.</p>
+        </div>
+
+        <div class="subcategory-row">
+            <span class="subcategory active">Все</span>
+            <span class="subcategory">Персонажи</span>
+            <span class="subcategory">Сцены</span>
+            <span class="subcategory">Личные работы</span>
+        </div>
+
+        <div class="portfolio-grid">
+            <article class="portfolio-card card-tall placeholder-one"><span>ILLUSTRATION 01</span></article>
+            <article class="portfolio-card placeholder-two"><span>ILLUSTRATION 02</span></article>
+            <article class="portfolio-card placeholder-three"><span>ILLUSTRATION 03</span></article>
+            <article class="portfolio-card placeholder-two"><span>ILLUSTRATION 04</span></article>
+        </div>
+    </section>
+
+    <section class="portfolio-section" id="concepts">
+        <div class="portfolio-heading">
+            <div>
+                <p class="eyebrow">02 / CONCEPT ART</p>
+                <h2>Концепт-арт</h2>
+            </div>
+            <p>Разработка визуальных идей, окружения, предметов и образов.</p>
+        </div>
+
+        <div class="subcategory-row">
+            <span class="subcategory active">Все</span>
+            <span class="subcategory">Персонажи</span>
+            <span class="subcategory">Окружение</span>
+            <span class="subcategory">Предметы</span>
+        </div>
+
+        <div class="portfolio-grid">
+            <article class="portfolio-card placeholder-three"><span>CONCEPT 01</span></article>
+            <article class="portfolio-card card-tall placeholder-one"><span>CONCEPT 02</span></article>
+            <article class="portfolio-card placeholder-two"><span>CONCEPT 03</span></article>
+            <article class="portfolio-card placeholder-three"><span>CONCEPT 04</span></article>
+        </div>
+    </section>
+
+    <section class="portfolio-section" id="character-design">
+        <div class="portfolio-heading">
+            <div>
+                <p class="eyebrow">03 / CHARACTER DESIGN</p>
+                <h2>Персонажи</h2>
+            </div>
+            <p>Дизайн персонажей, вариации образов, костюмы и визуальные исследования.</p>
+        </div>
+
+        <div class="subcategory-row">
+            <span class="subcategory active">Все</span>
+            <span class="subcategory">Оригинальные персонажи</span>
+            <span class="subcategory">Дизайн образа</span>
+            <span class="subcategory">Лист персонажа</span>
+        </div>
+
+        <div class="portfolio-grid">
+            <article class="portfolio-card placeholder-two"><span>CHARACTER 01</span></article>
+            <article class="portfolio-card placeholder-one"><span>CHARACTER 02</span></article>
+            <article class="portfolio-card card-tall placeholder-three"><span>CHARACTER 03</span></article>
+        </div>
+    </section>
+
+    <section class="portfolio-section" id="animation">
+        <div class="portfolio-heading">
+            <div>
+                <p class="eyebrow">04 / ANIMATION</p>
+                <h2>Анимация</h2>
+            </div>
+            <p>Анимационные работы, короткие сцены, тесты и экспериментальные проекты.</p>
+        </div>
+
+        <div class="subcategory-row">
+            <span class="subcategory active">Все</span>
+            <span class="subcategory">2D Animation</span>
+            <span class="subcategory">Animation Tests</span>
+            <span class="subcategory">Motion</span>
+        </div>
+
+        <div class="animation-grid">
+            <article class="animation-card placeholder-three">
+                <div class="play">▶</div>
+                <span>ANIMATION 01</span>
+            </article>
+            <article class="animation-card placeholder-one">
+                <div class="play">▶</div>
+                <span>ANIMATION 02</span>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <span>© <span id="year"></span> Darya</span>
+    <span>Artist & Animator</span>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
