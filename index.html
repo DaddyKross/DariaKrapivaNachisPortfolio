@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="forest-home">
-<div class="foliage-cluster foliage-top-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="foliage-cluster foliage-top-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="foliage-cluster foliage-mid-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="foliage-cluster foliage-mid-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="foliage-cluster foliage-bottom-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-<div class="foliage-cluster foliage-bottom-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="sun-rays" aria-hidden="true"><span class="sun-ray sun-ray-one"></span><span class="sun-ray sun-ray-two"></span><span class="sun-ray sun-ray-three"></span></div>
+
+<div class="foliage-cluster foliage-top-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i></div>
+<div class="foliage-cluster foliage-top-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i></div>
+<div class="foliage-cluster foliage-mid-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i></div>
+<div class="foliage-cluster foliage-mid-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i></div>
+<div class="foliage-cluster foliage-bottom-left" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i></div>
+<div class="foliage-cluster foliage-bottom-right" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i><i class="extra-leaf"></i></div>
 
 <header class="site-header">
     <a class="logo" href="index.html">DARYA<span>.</span></a>
@@ -43,17 +45,21 @@
             <a class="button" href="portfolio.html">Смотреть портфолио <span>→</span></a>
         </div>
 
-        <div class="hero-art">
-            <!-- Пока здесь заглушка. Потом можно заменить на главную работу Дарьи. -->
-            <div class="art-placeholder">
-                <span>MAIN<br>ARTWORK</span>
-            </div>
-        </div>
+        <figure class="hero-art main-artwork-frame">
+            <img
+                class="main-artwork"
+                src="images/main-artwork.webp"
+                alt="Иллюстрация Дарьи: рыжеволосая эльфийка в широкополой шляпе на светлом фоне"
+                fetchpriority="high"
+                decoding="async"
+            >
+            <figcaption class="main-artwork-caption">SELECTED ARTWORK</figcaption>
+        </figure>
     </section>
 
     <section class="section about" id="about">
         <div class="about-image">
-            <div class="about-placeholder">PORTRAIT</div>
+            <div class="about-placeholder"><span>PORTRAIT</span><small>Портрет появится здесь позже</small></div>
         </div>
 
         <div class="about-content">

@@ -1110,3 +1110,476 @@ h2 {
   .foliage-bottom-right { right: -145px; bottom: -125px; }
 }
 @media (prefers-reduced-motion: reduce) { .foliage-cluster i { animation: none !important; } }
+
+
+/* ===== WOODLAND ATMOSPHERE: layered depth, sun shafts and a finer canopy ===== */
+body.forest-home, body.portfolio-page {
+  position: relative;
+  isolation: isolate;
+  background-color: #0a2118;
+  background-image:
+    radial-gradient(ellipse at 49% 10%, rgba(130, 164, 91, .22) 0%, rgba(75, 120, 68, .10) 23%, transparent 47%),
+    radial-gradient(ellipse at 7% 38%, rgba(48, 99, 56, .25) 0%, transparent 32%),
+    radial-gradient(ellipse at 94% 49%, rgba(47, 103, 63, .22) 0%, transparent 34%),
+    radial-gradient(ellipse at 50% 100%, rgba(31, 79, 47, .34) 0%, transparent 48%),
+    linear-gradient(180deg, #183a27 0%, #102d20 38%, #0a2118 100%);
+  background-attachment: fixed;
+}
+/* Distant trunks and soft canopy shadows: intentionally abstract, not a flat fill. */
+body.forest-home::before, body.portfolio-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    radial-gradient(ellipse at 50% 27%, rgba(179, 192, 116, .10), transparent 28%),
+    linear-gradient(90deg, rgba(2, 15, 9, .52) 0%, transparent 13%, transparent 86%, rgba(2, 15, 9, .44) 100%),
+    linear-gradient(92deg, transparent 0 7%, rgba(2, 17, 10, .16) 7.4%, transparent 8.5% 22%, rgba(4, 20, 12, .13) 22.5%, transparent 24% 73%, rgba(2, 17, 10, .14) 73.5%, transparent 75% 91%, rgba(2, 17, 10, .12) 91.5%, transparent 93%);
+  filter: blur(13px);
+}
+body.forest-home::after, body.portfolio-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+body.forest-home main, body.forest-home .site-header, body.forest-home .site-footer,
+body.portfolio-page main, body.portfolio-page .site-header, body.portfolio-page .site-footer {
+  position: relative;
+  z-index: 2;
+}
+/* Occasional golden-green light beams coming through the canopy. */
+.sun-rays {
+  position: fixed;
+  inset: -12vh 0 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.sun-ray {
+  position: absolute;
+  top: -18vh;
+  width: clamp(90px, 15vw, 230px);
+  height: 120vh;
+  opacity: 0;
+  filter: blur(15px);
+  clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, rgba(239, 246, 174, .02) 0%, rgba(223, 237, 160, .13) 32%, rgba(198, 225, 143, .07) 76%, transparent 100%);
+  transform: rotate(19deg);
+  animation: sun-shaft 27s ease-in-out infinite;
+}
+.sun-ray-one { left: 16%; animation-delay: -8s; }
+.sun-ray-two { left: 49%; width: clamp(75px, 11vw, 170px); transform: rotate(27deg); animation-delay: -19s; animation-duration: 33s; }
+.sun-ray-three { left: 76%; width: clamp(110px, 17vw, 250px); transform: rotate(14deg); animation-delay: -25s; animation-duration: 31s; }
+@keyframes sun-shaft {
+  0%, 47%, 100% { opacity: 0; }
+  53% { opacity: .12; }
+  60% { opacity: .25; }
+  68% { opacity: .09; }
+  75% { opacity: 0; }
+}
+/* Leaves stay at the perimeter and behind the site content. */
+.foliage-cluster {
+  z-index: 1 !important;
+  width: 270px;
+  height: 290px;
+  opacity: .92;
+  filter: drop-shadow(0 7px 13px rgba(0,0,0,.19));
+}
+.foliage-cluster i {
+  width: 48px !important;
+  height: 21px !important;
+  border-radius: 100% 0 100% 0;
+  border: 1px solid rgba(177, 218, 157, .18);
+  background: linear-gradient(135deg, #75a36a 0%, #376d4b 55%, #173d2c 100%);
+  box-shadow: inset 0 1px rgba(218, 239, 189, .08), 0 3px 9px rgba(0,0,0,.12);
+  transform-origin: 12% 88%;
+  animation: tiny-leaf-sway 7.8s ease-in-out infinite alternate;
+  transition: transform .55s cubic-bezier(.2,.75,.2,1), filter .3s ease;
+}
+.foliage-cluster i:nth-child(3n) { width: 42px !important; height: 18px !important; border-radius: 85% 10% 85% 10%; }
+.foliage-cluster i:nth-child(4n) { width: 36px !important; height: 23px !important; border-radius: 70% 0 70% 0; }
+.foliage-cluster i:nth-child(5n) { background: linear-gradient(135deg,#79b29a,#34715d 65%,#194434); }
+.foliage-cluster i:nth-child(2n) { animation-delay: -2.7s; }
+.foliage-cluster i:nth-child(3n) { animation-delay: -4.2s; }
+.foliage-cluster i:nth-child(19) { left: 36px; top: 54px; transform: rotate(32deg); }
+.foliage-cluster i:nth-child(20) { left: 145px; top: 46px; transform: rotate(112deg); }
+.foliage-cluster i:nth-child(21) { left: 14px; top: 154px; transform: rotate(-28deg); }
+.foliage-cluster i:nth-child(22) { left: 115px; top: 116px; transform: rotate(55deg); }
+.foliage-cluster i:nth-child(23) { left: 190px; top: 174px; transform: rotate(18deg); }
+.foliage-cluster i:nth-child(24) { left: 72px; top: 210px; transform: rotate(82deg); }
+.foliage-cluster i:nth-child(25) { left: 220px; top: 92px; transform: rotate(132deg); }
+.foliage-cluster i:nth-child(26) { left: 156px; top: 239px; transform: rotate(-12deg); }
+.foliage-cluster i:nth-child(27) { left: 15px; top: 22px; transform: rotate(74deg); }
+.foliage-cluster i:nth-child(28) { left: 210px; top: 246px; transform: rotate(48deg); }
+.foliage-cluster:hover i { animation-play-state: paused; filter: brightness(1.18); }
+.foliage-cluster:hover i:nth-child(odd) { transform: rotate(-18deg) translate(-7px,-5px) scale(1.08); }
+.foliage-cluster:hover i:nth-child(even) { transform: rotate(92deg) translate(7px,-6px) scale(.96); }
+.foliage-top-left { top: 28px; left: -166px; transform: rotate(12deg) scale(1.02); }
+.foliage-top-right { top: 28px; right: -166px; transform: scaleX(-1) rotate(12deg) scale(1.02); }
+.foliage-mid-left { top: 37%; left: -223px; transform: rotate(-10deg) scale(.94); }
+.foliage-mid-right { top: 42%; right: -223px; transform: scaleX(-1) rotate(-10deg) scale(.94); }
+.foliage-bottom-left { bottom: -126px; left: -166px; transform: rotate(-28deg) scale(1.04); }
+.foliage-bottom-right { bottom: -126px; right: -166px; transform: scaleX(-1) rotate(-28deg) scale(1.04); }
+@keyframes tiny-leaf-sway { from { margin-top: -1px; rotate: -2deg; } to { margin-top: 3px; rotate: 3deg; } }
+/* Materials now use the same compact, framed gallery rhythm as the other sections. */
+.materials-grid.real-gallery { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+.materials-grid .art-frame { height: clamp(200px, 22vw, 320px); }
+.materials-grid .art-card { min-width: 0; }
+@media (max-width: 1000px) {
+  .foliage-mid-left { left: -245px; }
+  .foliage-mid-right { right: -245px; }
+  .materials-grid.real-gallery { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 850px) {
+  .foliage-cluster { opacity: .82; }
+  .foliage-mid-left { left: -255px; }
+  .foliage-mid-right { right: -255px; }
+  .sun-ray { filter: blur(19px); }
+}
+@media (max-width: 550px) {
+  .foliage-cluster { transform: scale(.68); opacity: .72; }
+  .foliage-top-left { left: -190px; top: 38px; }
+  .foliage-top-right { right: -190px; top: 38px; }
+  .foliage-mid-left { left: -260px; }
+  .foliage-mid-right { right: -260px; }
+  .foliage-bottom-left { left: -190px; bottom: -145px; }
+  .foliage-bottom-right { right: -190px; bottom: -145px; }
+  .materials-grid.real-gallery { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 9px; }
+  .materials-grid .art-card { padding: 5px; }
+  .materials-grid .art-frame { height: clamp(165px, 48vw, 235px); }
+  .sun-ray { width: 100px; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foliage-cluster i, .sun-ray { animation: none !important; transition: none !important; }
+  .sun-ray { display: none; }
+}
+
+
+/* ===== V7: clearer portfolio layout + forest depth ===== */
+/* The category bar is part of the document flow: it never floats over artwork. */
+.portfolio-anchor {
+    position: relative !important;
+    top: auto !important;
+    z-index: 3 !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: min(1120px, calc(100% - 64px));
+    margin: 0 auto 26px;
+    padding: 14px 20px;
+    background: rgba(8, 29, 21, .92);
+    border: 1px solid rgba(168, 216, 202, .2);
+    backdrop-filter: blur(14px);
+}
+.portfolio-anchor a {
+    padding: 9px 15px;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+.portfolio-intro { padding-bottom: 54px; }
+.portfolio-showcase {
+    position: relative;
+    z-index: 2;
+    padding-top: 68px;
+    padding-bottom: 82px;
+    scroll-margin-top: 24px;
+}
+.portfolio-showcase:first-of-type { padding-top: 54px; }
+.portfolio-heading { margin-bottom: 34px; }
+
+/* A layered woodland floor: glades, distant trunks, canopy shade and soft haze. */
+body.forest-home, body.portfolio-page {
+    background-color: #081c14;
+    background-image:
+        radial-gradient(ellipse at 52% 5%, rgba(204, 222, 143, .19) 0%, rgba(126, 165, 94, .10) 17%, transparent 36%),
+        radial-gradient(ellipse at 9% 42%, rgba(70, 123, 70, .25) 0%, transparent 34%),
+        radial-gradient(ellipse at 92% 47%, rgba(64, 119, 74, .22) 0%, transparent 36%),
+        radial-gradient(ellipse at 48% 84%, rgba(36, 91, 56, .24) 0%, transparent 43%),
+        radial-gradient(ellipse at 75% 16%, rgba(114, 149, 83, .10) 0%, transparent 22%),
+        linear-gradient(180deg, #173b28 0%, #102e20 34%, #0b2419 68%, #071a12 100%);
+    background-attachment: fixed;
+}
+body.forest-home::before, body.portfolio-page::before {
+    opacity: .56;
+    background:
+        radial-gradient(ellipse at 50% 8%, rgba(230, 238, 169, .15), transparent 27%),
+        radial-gradient(ellipse at 16% 65%, rgba(103, 155, 89, .16), transparent 30%),
+        radial-gradient(ellipse at 84% 58%, rgba(100, 153, 95, .14), transparent 31%),
+        linear-gradient(90deg, rgba(1, 13, 8, .52) 0%, transparent 15%, transparent 84%, rgba(1, 13, 8, .48) 100%),
+        linear-gradient(92deg, transparent 0 8%, rgba(2, 17, 10, .20) 8.4%, transparent 10% 21%, rgba(2, 17, 10, .15) 21.5%, transparent 24% 72%, rgba(2, 17, 10, .16) 72.5%, transparent 75% 90%, rgba(2, 17, 10, .18) 90.5%, transparent 93%);
+    filter: blur(16px);
+}
+body.forest-home::after, body.portfolio-page::after {
+    opacity: .12;
+    mix-blend-mode: soft-light;
+}
+
+/* Dense, smaller leaves stay outside the content column and cannot intercept clicks. */
+.foliage-cluster {
+    z-index: 1 !important;
+    pointer-events: none !important;
+    width: 270px;
+    height: 290px;
+    opacity: .98;
+    filter: drop-shadow(0 8px 15px rgba(0,0,0,.22));
+}
+.foliage-cluster i {
+    width: 35px !important;
+    height: 16px !important;
+    border-radius: 90% 8% 90% 8%;
+    background: linear-gradient(135deg, #7baa70 0%, #477c53 48%, #1c4933 100%);
+    border: 1px solid rgba(190, 224, 168, .23);
+    box-shadow: inset 0 1px rgba(226, 241, 193, .12), 0 3px 9px rgba(0,0,0,.15);
+    transform-origin: 12% 88%;
+    transition: translate .48s cubic-bezier(.18,.72,.2,1), filter .35s ease;
+    will-change: translate;
+}
+.foliage-cluster i:nth-child(3n) { width: 30px !important; height: 14px !important; border-radius: 78% 12% 78% 12%; }
+.foliage-cluster i:nth-child(4n) { width: 27px !important; height: 17px !important; border-radius: 68% 0 70% 0; }
+.foliage-cluster i:nth-child(5n) { background: linear-gradient(135deg,#83b99c,#3e7b61 62%,#1c4936); }
+.foliage-cluster i:nth-child(7n) { border-radius: 58% 12% 88% 16%; }
+.foliage-cluster i.leaf-highlight { filter: brightness(1.17) saturate(1.05); }
+.foliage-cluster i.canopy-extra-leaf {
+    left: auto;
+    top: auto;
+    width: 30px !important;
+    height: 14px !important;
+    border-radius: 90% 6% 88% 10%;
+    background: linear-gradient(135deg, var(--leaf-colour-a, #75a86f), var(--leaf-colour-b, #315f43));
+    transform: rotate(var(--leaf-angle, 0deg));
+    animation: tiny-leaf-sway var(--leaf-duration, 8s) ease-in-out infinite alternate;
+}
+.foliage-cluster i.canopy-extra-leaf[data-leaf-shape="round"] { border-radius: 78% 20% 75% 24%; }
+.foliage-cluster i.canopy-extra-leaf[data-leaf-shape="narrow"] { width: 24px !important; height: 11px !important; border-radius: 100% 0 100% 0; }
+.foliage-cluster i.canopy-extra-leaf[data-leaf-shape="soft"] { border-radius: 70% 28% 66% 23%; }
+.foliage-cluster i.canopy-extra-leaf::after { content: ""; position: absolute; left: 10%; top: 50%; width: 78%; height: 1px; background: rgba(223, 241, 193, .3); transform: rotate(-9deg); }
+.foliage-top-left { top: 28px; left: -166px; }
+.foliage-top-right { top: 28px; right: -166px; }
+.foliage-mid-left { top: 37%; left: -223px; }
+.foliage-mid-right { top: 42%; right: -223px; }
+.foliage-bottom-left { bottom: -126px; left: -166px; }
+.foliage-bottom-right { bottom: -126px; right: -166px; }
+
+/* Keep shafts behind the UI; foliage is layered in front of the rays. */
+.sun-rays { z-index: 1; pointer-events: none; }
+.sun-ray { opacity: 0; filter: blur(17px); }
+@media (max-width: 1000px) {
+    .foliage-mid-left { left: -245px; }
+    .foliage-mid-right { right: -245px; }
+    .portfolio-anchor { width: calc(100% - 44px); }
+}
+@media (max-width: 850px) {
+    .foliage-cluster { opacity: .88; }
+    .foliage-mid-left { left: -258px; }
+    .foliage-mid-right { right: -258px; }
+    .portfolio-anchor { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; }
+}
+@media (max-width: 550px) {
+    .portfolio-anchor { width: calc(100% - 28px); margin-bottom: 10px; padding: 10px; }
+    .portfolio-anchor a { font-size: .68rem; padding: 8px 10px; }
+    .foliage-cluster { transform: scale(.56); opacity: .8; }
+    .foliage-top-left { left: -190px; top: 38px; }
+    .foliage-top-right { right: -190px; top: 38px; }
+    .foliage-mid-left { left: -260px; }
+    .foliage-mid-right { right: -260px; }
+    .foliage-bottom-left { left: -190px; bottom: -145px; }
+    .foliage-bottom-right { right: -190px; bottom: -145px; }
+    .portfolio-showcase { padding-top: 54px; padding-bottom: 62px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .foliage-cluster i, .sun-ray { animation: none !important; transition: none !important; }
+    .sun-ray { display: none; }
+}
+
+
+/* ===== V8: main artwork + deeper, denser canopy ===== */
+.hero-art.main-artwork-frame {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    padding: 8px;
+    background: linear-gradient(145deg, rgba(119, 170, 128, .26), rgba(12, 42, 30, .72));
+    border: 1px solid rgba(168, 216, 202, .34);
+    box-shadow: 18px 22px 0 rgba(65, 111, 93, .12), 0 28px 70px rgba(0,0,0,.28);
+}
+.main-artwork {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: #8ca9bf;
+    border: 1px solid rgba(237,243,223,.14);
+}
+.main-artwork-caption {
+    position: absolute;
+    left: 20px;
+    bottom: 18px;
+    padding: 6px 10px;
+    background: rgba(7, 28, 19, .78);
+    border: 1px solid rgba(187, 221, 169, .28);
+    color: #e0edcc;
+    font-size: .58rem;
+    letter-spacing: .18em;
+    pointer-events: none;
+}
+.about-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.about-placeholder small {
+    color: var(--muted);
+    font-size: .68rem;
+    letter-spacing: .04em;
+}
+
+/* Smaller leaves in a much denser layered canopy. The centre remains readable. */
+.foliage-cluster i:not(.canopy-extra-leaf) {
+    width: 25px !important;
+    height: 12px !important;
+    border-radius: 88% 8% 88% 10%;
+}
+.foliage-cluster i:nth-child(3n):not(.canopy-extra-leaf) {
+    width: 21px !important;
+    height: 10px !important;
+    border-radius: 78% 12% 78% 12%;
+}
+.foliage-cluster i:nth-child(4n):not(.canopy-extra-leaf) {
+    width: 19px !important;
+    height: 11px !important;
+    border-radius: 68% 0 70% 0;
+}
+.foliage-cluster i.canopy-extra-leaf {
+    width: 22px !important;
+    height: 10px !important;
+    border-radius: 90% 6% 88% 10%;
+}
+.foliage-cluster i.canopy-extra-leaf[data-leaf-shape="round"] {
+    width: 21px !important;
+    height: 12px !important;
+    border-radius: 78% 20% 75% 24%;
+}
+.foliage-cluster i.canopy-extra-leaf[data-leaf-shape="narrow"] {
+    width: 18px !important;
+    height: 8px !important;
+    border-radius: 100% 0 100% 0;
+}
+.foliage-cluster i.canopy-extra-leaf[data-leaf-shape="soft"] {
+    width: 23px !important;
+    height: 11px !important;
+    border-radius: 70% 28% 66% 23%;
+}
+.foliage-cluster i.canopy-extra-leaf {
+    box-shadow: inset 0 1px rgba(226,241,193,.13), 0 3px 8px rgba(0,0,0,.18);
+}
+.foliage-cluster i.canopy-extra-leaf::after {
+    opacity: .72;
+}
+
+@media (max-width: 800px) {
+    .hero-art.main-artwork-frame {
+        width: 100%;
+        max-width: 720px;
+        margin-inline: auto;
+    }
+}
+@media (max-width: 550px) {
+    .hero-art.main-artwork-frame {
+        padding: 5px;
+        box-shadow: 8px 10px 0 rgba(65,111,93,.12), 0 18px 42px rgba(0,0,0,.24);
+    }
+    .main-artwork-caption { left: 12px; bottom: 12px; font-size: .5rem; }
+}
+
+
+/* ===== V8.1: occasional sunlight filtering through the canopy ===== */
+.sun-rays {
+    position: fixed;
+    inset: -14vh 0 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    opacity: 1;
+}
+.sun-rays::before,
+.sun-rays::after {
+    content: "";
+    position: absolute;
+    inset: -8% -5%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 4.5s ease;
+}
+.sun-rays::before {
+    background:
+      radial-gradient(ellipse at 24% 4%, rgba(255, 235, 168, .15), transparent 38%),
+      radial-gradient(ellipse at 68% 0%, rgba(211, 238, 160, .11), transparent 42%);
+    filter: blur(22px);
+}
+.sun-rays::after {
+    background: linear-gradient(115deg, transparent 0 16%, rgba(246, 234, 177, .035) 28%, transparent 42% 60%, rgba(205, 232, 161, .035) 72%, transparent 86%);
+    filter: blur(30px);
+}
+.sun-rays.has-light::before { opacity: .9; }
+.sun-rays.has-light::after { opacity: .8; }
+.sun-ray {
+    top: -22vh;
+    height: 138vh;
+    width: clamp(95px, 13vw, 205px);
+    opacity: 0;
+    filter: blur(19px);
+    clip-path: polygon(43% 0, 57% 0, 100% 100%, 0 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 246, 200, .02) 0%,
+      rgba(255, 236, 175, .17) 24%,
+      rgba(225, 239, 165, .13) 56%,
+      rgba(202, 228, 155, .055) 82%,
+      transparent 100%
+    );
+    animation: none !important;
+    transition: opacity 4.2s ease, filter 5.5s ease, transform 9s ease;
+    will-change: opacity, transform;
+}
+.sun-ray::after {
+    content: "";
+    position: absolute;
+    inset: 0 35%;
+    background: linear-gradient(180deg, rgba(255, 247, 206, .1), rgba(255, 240, 180, .22) 42%, transparent 100%);
+    filter: blur(13px);
+}
+.sun-ray-one { left: 13%; transform: rotate(18deg) translateX(-12px); }
+.sun-ray-two { left: 47%; width: clamp(72px, 9vw, 148px); transform: rotate(26deg) translateX(8px); }
+.sun-ray-three { left: 76%; width: clamp(105px, 15vw, 225px); transform: rotate(13deg) translateX(-7px); }
+.sun-ray.is-visible { opacity: .34; filter: blur(15px); }
+.sun-ray-one.is-visible { transform: rotate(18deg) translateX(12px); }
+.sun-ray-two.is-visible { transform: rotate(26deg) translateX(-10px); }
+.sun-ray-three.is-visible { transform: rotate(13deg) translateX(14px); }
+@media (max-width: 850px) {
+    .sun-ray { filter: blur(21px); }
+    .sun-ray.is-visible { opacity: .25; }
+}
+@media (max-width: 550px) {
+    .sun-ray { width: 84px; filter: blur(23px); }
+    .sun-ray.is-visible { opacity: .19; }
+    .sun-rays::before { filter: blur(30px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .sun-rays, .sun-rays::before, .sun-rays::after, .sun-ray { display: none !important; }
+}
